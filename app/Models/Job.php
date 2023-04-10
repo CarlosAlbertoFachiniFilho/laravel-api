@@ -13,6 +13,6 @@ class Job extends Model
     protected $dates = ['deleted_at'];
 
     public function company(){
-        return $this->belongsTo('App\Company');
+        return $this->belongsTo('App\Models\Company');
     }
 }
