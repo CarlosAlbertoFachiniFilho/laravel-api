@@ -28,6 +28,7 @@ Route::controller(JobsController::class)->group(function () {
     Route::get('jobs', 'index');
     Route::get('show_job/{id}', 'show');
     Route::post('store_job', 'store');
+    Route::put('update_job/{id}', 'update');
 
 });
 
@@ -35,6 +36,7 @@ Route::controller(CompaniesController::class)->group(function () {
     Route::get('companies', 'index');
     Route::get('show_company/{id}', 'show');
     Route::post('store_company', 'store');
+    Route::put('update_company/{id}', 'update');
 });
 
 

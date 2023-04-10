@@ -32,4 +32,17 @@ class CompaniesController extends Controller
         return response()->json($company, 201);
     }
 
+    public function update(Request $request, $id) {
+        $company = Company::find($id);
+
+        if(!$company) {
+            return response()->json([
+                'message' => 'Record not Found!'
+            ], 404);
+        }
+        $company->fill($request->all());
+        $company->save();
+        return response()->json($company);
+    }
+
 }
