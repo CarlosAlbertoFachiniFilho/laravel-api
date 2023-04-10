@@ -44,4 +44,14 @@ class JobsController extends Controller
         $job->save();
         return response()->json($job);
     }
+
+    public function destroy($id){
+        $job = Job::find($id);
+        if(!$job) {
+            return response()->json([
+                'message'=> 'Record not found!',
+            ], 404);
+        }
+        $job->delete();
+    }
 }
