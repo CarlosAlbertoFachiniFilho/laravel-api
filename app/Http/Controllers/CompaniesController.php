@@ -11,4 +11,25 @@ class CompaniesController extends Controller
         $companies = Company::all();
         return response()->json($companies);
     }
+
+
+    public function show($id) {
+        $company = Company::find($id);
+
+        if(!$company){
+            return response()->json([
+                'message' => 'Record not Found!',
+            ], 404);
+        }
+        return response()->json($company);
+    }
+
+    public function store(Request $request) {
+        $company = new Company();
+        $company->fill($request->all());
+        $company->save();
+
+        return response()->json($company, 201);
+    }
+
 }

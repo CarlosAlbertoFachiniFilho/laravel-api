@@ -24,9 +24,20 @@ Route::get('/', function() {
     return response()->json(['message'=> 'Jobs API', 'status' => 'Connected']);
 });
 
-// Route::controller(JobsController::class)->group(function () {
-//     Route::get('jobs', 'index');
-// });
+Route::controller(JobsController::class)->group(function () {
+    Route::get('jobs', 'index');
+    Route::get('show_job/{id}', 'show');
+    Route::post('store_job', 'store');
 
-Route::resource('jobs', JobsController::class);
-Route::resource('companies', CompaniesController::class);
+});
+
+Route::controller(CompaniesController::class)->group(function () {
+    Route::get('companies', 'index');
+    Route::get('show_company/{id}', 'show');
+    Route::post('store_company', 'store');
+});
+
+
+
+// Route::resource('jobs', JobsController::class);
+// Route::resource('companies', CompaniesController::class);
